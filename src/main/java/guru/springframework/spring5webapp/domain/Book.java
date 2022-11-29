@@ -1,6 +1,9 @@
 package guru.springframework.spring5webapp.domain;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 @Entity
@@ -11,15 +14,15 @@ public class Book {
     private String  title;
     private String  isbn;
     @ManyToMany(mappedBy = "books")
-    private Set<Author> authors;
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.PERSIST})
+    private Set<Author> authors = new HashSet<>();
 
     public Book(){
     }
 
-    public Book(String title, String isbn, Set<Author> authors) {
+    public Book(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
-        this.authors = authors;
     }
 
     public Long getBookId() {

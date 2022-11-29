@@ -5,10 +5,9 @@ import guru.springframework.spring5webapp.domain.Book;
 import guru.springframework.spring5webapp.repositories.AuthorRepository;
 import guru.springframework.spring5webapp.repositories.BookRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
-import java.util.Set;
-
+@Component
 public class BootStrapData implements CommandLineRunner {
 
     private final BookRepository bookRepository;
@@ -22,8 +21,8 @@ public class BootStrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Author eric = new Author("Eric","Evans",new HashSet<>());
-        Book bk = new Book("Hello bk", "123123", new HashSet<>());
+        Author eric = new Author("Eric","Evans");
+        Book bk = new Book("Hello bk", "123123");
 
         eric.getBooks().add(bk);
         bk.getAuthors().add(eric);
