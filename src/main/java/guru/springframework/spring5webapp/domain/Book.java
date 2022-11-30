@@ -17,6 +17,10 @@ public class Book {
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.PERSIST})
     private Set<Author> authors = new HashSet<>();
 
+    @ManyToOne
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.PERSIST})
+    private Publisher publisher;
+
     public Book(){
     }
 
@@ -24,7 +28,13 @@ public class Book {
         this.title = title;
         this.isbn = isbn;
     }
+    public Publisher getPublisher() {
+        return publisher;
+    }
 
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
     public Long getBookId() {
         return bookId;
     }
