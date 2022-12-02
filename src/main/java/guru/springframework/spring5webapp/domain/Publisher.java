@@ -34,6 +34,13 @@ public class Publisher {
         this.state = state;
         this.zip = zip;
     }
+    public Long getPublisherId() {
+        return publisherId;
+    }
+
+    public void setPublisherId(Long publisherId) {
+        this.publisherId = publisherId;
+    }
 
     public Set<Book> getBooks() {
         return books;
